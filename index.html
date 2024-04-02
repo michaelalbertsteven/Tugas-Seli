@@ -100,18 +100,18 @@
     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, officiis!</p>
     <div class="row">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.502734311526!2d112.61354597415804!3d-7.9468858791650145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e78827687d272e7%3A0x789ce9a636cd3aa2!2sPoliteknik%20Negeri%20Malang!5e0!3m2!1sid!2sid!4v1711965359602!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <form action="">
+        <form action="" name="beautysalon">
             <div class="input_grup">
                 <i data-feather="user"></i>
-                <input type="text" placeholder="Nama">
+                <input type="text" placeholder="Nama" name="nama">
             </div>
             <div class="input_grup">
                 <i data-feather="mail"></i>
-                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Email" name="email">
             </div>
             <div class="input_grup">
                 <i data-feather="phone"></i>
-                <input type="text" placeholder="No Hp">
+                <input type="number" placeholder="No Hp" name="nohp">
             </div>
             <button type="submit" class="btn">Kirim Pesan</button>
         </form>
@@ -125,5 +125,16 @@
     feather.replace();
     </script>
     <script src="script.js"></script>
+    <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxXTui0AtRQwKI5uuxYAAronyhUU-D02fsxBaxYAIhwHnfewf1PT7HpP9tcNFwkPNroQA/exec'
+  const form = document.forms['beautysalon']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
 </body>
 </html>
